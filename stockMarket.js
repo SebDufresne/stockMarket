@@ -7,7 +7,7 @@ const maxOfArr = arr => arr.reduce((acc,x) => acc <= x ? x : acc, arr[0]);
 
 const positiveDelta = arr => arr[0] > arr[1] ? 0 : arr[1] - arr[0];
 
-const maxDiff = (arr, begin, end) => {
+const maxProfit = (arr, begin, end) => {
   let leftPart = 0, rightPart = 0, maxDeltaOfArr = 0;
 
   const mid = Math.floor(begin + end / 2);
@@ -23,7 +23,7 @@ const maxDiff = (arr, begin, end) => {
       leftSlice.push(leftSlice[0]);
       leftPart = 0;
     } else {
-      leftPart = maxDiff(leftSlice, 0, leftSlice.length - 1);
+      leftPart = maxProfit(leftSlice, 0, leftSlice.length - 1);
     }
 
     // Right part of Array
@@ -31,7 +31,7 @@ const maxDiff = (arr, begin, end) => {
       rightSlice.push(rightSlice[0]);
       rightPart = 0;
     }  else {
-      rightPart = maxDiff(rightSlice, 0, rightSlice.length - 1);
+      rightPart = maxProfit(rightSlice, 0, rightSlice.length - 1);
     }
 
     maxDeltaOfArr = maxOfArr(rightSlice) - minOfArr(leftSlice);
@@ -40,7 +40,7 @@ const maxDiff = (arr, begin, end) => {
 };
 
 const stockMarket = (arr) => {
-  const delta = maxDiff(arr, 0, arr.length - 1);
+  const delta = maxProfit(arr, 0, arr.length - 1);
   return delta > 0 ? delta : -1;
 };
 
