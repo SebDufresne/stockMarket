@@ -8,7 +8,7 @@ const maxOfArr = arr => arr.reduce((acc,x) => acc <= x ? x : acc, arr[0]);
 const positiveDelta = arr => arr[0] > arr[1] ? 0 : arr[1] - arr[0];
 
 const maxDiff = (arr, begin, end) => {
-  let leftPart = 0, rightPart = 0, deltaMaxOfArr = 0;
+  let leftPart = 0, rightPart = 0, maxDeltaOfArr = 0;
 
   const mid = Math.floor(begin + end / 2);
 
@@ -34,9 +34,9 @@ const maxDiff = (arr, begin, end) => {
       rightPart = maxDiff(rightSlice, 0, rightSlice.length - 1);
     }
 
-    deltaMaxOfArr = maxOfArr(rightSlice) - minOfArr(leftSlice);
+    maxDeltaOfArr = maxOfArr(rightSlice) - minOfArr(leftSlice);
   }
-  return getLarger(getLarger(leftPart, rightPart), deltaMaxOfArr);
+  return getLarger(getLarger(leftPart, rightPart), maxDeltaOfArr);
 };
 
 const stockMarket = (arr) => {
