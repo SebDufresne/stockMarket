@@ -47,6 +47,4 @@ const stockMarket = (arr) => {
   return delta > 0 ? delta : -1;
 };
 
-console.log(stockMarket([45, 24, 35, 31, 40, 38, 11]));
-console.log(stockMarket([7, 6, 5, 4, 3, 2, 1]));
-console.log(stockMarket([6, 7, 8]));
+module.exports = stockMarket;
