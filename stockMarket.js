@@ -1,16 +1,18 @@
 'use strict';
 const getLarger = (a,b) => a > b ? a : b;
 
-const minOfArr = (arr) => arr.reduce((acc,x) => acc <= x ? acc : x, arr[0]);
+const minOfArr = arr => arr.reduce((acc,x) => acc <= x ? acc : x, arr[0]);
 
-const maxOfArr = (arr) => arr.reduce((acc,x) => acc <= x ? x : acc, arr[0]);
+const maxOfArr = arr => arr.reduce((acc,x) => acc <= x ? x : acc, arr[0]);
+
+const positiveDelta = arr => arr[0] > arr[1] ? 0 : arr[1] - arr[0];
 
 const maxDiff = (arr, begin, end) => {
   let leftPart = 0, rightPart = 0, deltaMaxOfArr = 0;
 
   const mid = Math.floor(begin + end / 2);
 
-  if (arr.length === 2) return arr[0] > arr[1] ? 0 : arr[1] - arr[0];
+  if (arr.length === 2) return positiveDelta(arr);
 
   if (arr.length > 2) {
     const leftSlice = arr.slice(begin, mid + 1);
