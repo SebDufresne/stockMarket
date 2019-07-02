@@ -10,6 +10,8 @@ const maxDiff = (arr, begin, end) => {
 
   const mid = Math.floor(begin + end / 2);
 
+  if (arr.length === 2) return arr[0] > arr[1] ? 0 : arr[1] - arr[0];
+
   if (arr.length > 2) {
     const leftSlice = arr.slice(begin, mid + 1);
     const rightSlice = arr.slice(mid + 1, arr.length);
@@ -36,14 +38,7 @@ const maxDiff = (arr, begin, end) => {
 };
 
 const stockMarket = (arr) => {
-  let delta;
-  switch (arr.length) {
-  case 2:
-    delta = arr[0] < arr[1] ? arr[1] - arr[0] : -1;
-    break;
-  default:
-    delta = maxDiff(arr, 0, arr.length - 1);
-  }
+  const delta = maxDiff(arr, 0, arr.length - 1);
   return delta > 0 ? delta : -1;
 };
 
